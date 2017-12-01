@@ -25,5 +25,8 @@ class StringCalculatorsTest(unittest.TestCase):
         rand1 = randint(1,999999)
         rand2 = randint(1,999999)
         self.assertEqual(StringCalculator.add('{0!s},{1!s}'.format(rand1,rand2)),rand1+rand2)
+    
+    def test_stringcalculator_listendingwithcomma_shouldnotbreak(self):
+        self.assertEqual(StringCalculator.add("1,"),1)
 
         
