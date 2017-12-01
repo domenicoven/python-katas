@@ -60,7 +60,8 @@ class StringCalculatorsTest(unittest.TestCase):
 
 
     def test_stringcalculator_numberbiggerthan1000_shouldbeignore(self):
-        self.assertEqual(StringCalculator.add("1000,1"),1)
+        self.assertEqual(StringCalculator.add("1001,1"),1)
+        self.assertEqual(StringCalculator.add("1000,1"),1001)
     
 
 

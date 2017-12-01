@@ -20,7 +20,7 @@ class StringCalculator:
             value=0
         if value<0:
             raise NegativeNotAllowedException('negatives not allowed: {0}'.format(value))
-        return value if value<1000 else 0
+        return value if value<=1000 else 0
             
 
     @staticmethod
