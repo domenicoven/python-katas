@@ -1,18 +1,31 @@
 import re
-from functools import reduce
 
 class StringCalculator:
     @staticmethod
     def add(numbers):
-        if(len(numbers) >0):
-            numList = re.split(r'\W+', numbers)
-            total = reduce(lambda tot, curr: StringCalculator.str_to_int(tot) + StringCalculator.str_to_int(curr), numList)
-            return int(total)
-        return 0
+        delimiters = StringCalculator.retrieveDelimiters(numbers)
+        numList = re.split(delimiters, numbers)
+        total = 0
+        for val in numList:
+            total = total  + StringCalculator.str_to_int(val)
+        
+        return int(total)
 
     @staticmethod
     def str_to_int(str):
+        value=0
         try: 
-            return int(str)
+            value= int(str)
         except ValueError:
-            return 0 
+            value=0
+        if value>=0:
+            return value
+        else:
+            raise ValueError('negative numbers are not allowed')
+
+    @staticmethod
+    def retrieveDelimiters(str):
+        if (str.startswith("//")) and (str.index("\n") >2):
+           return re.compile(str[2:str.index('\n')] )
+        else:
+            return r"[,\n]"
