@@ -21,7 +21,7 @@ class StringCalculator:
         if value>=0:
             return value
         else:
-            raise ValueError('negative numbers are not allowed')
+            raise NegativeNotAllowedException('negatives not allowed: {0}'.format(value))
 
     @staticmethod
     def retrieveDelimiters(str):
@@ -29,3 +29,6 @@ class StringCalculator:
            return re.compile(str[2:str.index('\n')] )
         else:
             return r"[,\n]"
+
+class NegativeNotAllowedException(Exception):
+    pass

@@ -1,4 +1,4 @@
-from string_calculator import StringCalculator
+from string_calculator import StringCalculator, NegativeNotAllowedException
 from random import *
 import unittest
 
@@ -52,12 +52,11 @@ class StringCalculatorsTest(unittest.TestCase):
         self.assertEqual(StringCalculator.add("//kk\n1kk2"),3)
         self.assertEqual(StringCalculator.add("///\n1/2"),3)
 
-       
-
     def test_stringcalculator_passingnegativenumber_shouldthrowexception(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(NegativeNotAllowedException) as ctx:
             StringCalculator.add("1,-2")
-        
+        exc = ctx.exception
+        self.assertEqual("negatives not allowed: -2",str(exc))    
     
 
 
