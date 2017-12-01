@@ -5,7 +5,7 @@ class StringCalculator:
     def add(numbers):
         if(len(numbers) >0):
             numList = numbers.split(",")
-            total = reduce(lambda tot, curr: int(tot) + StringCalculator.str_to_int(curr), numList)
+            total = reduce(lambda tot, curr: StringCalculator.str_to_int(tot) + StringCalculator.str_to_int(curr), numList)
             return int(total)
         return 0
 

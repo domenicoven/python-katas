@@ -29,4 +29,20 @@ class StringCalculatorsTest(unittest.TestCase):
     def test_stringcalculator_listendingwithcomma_shouldnotbreak(self):
         self.assertEqual(StringCalculator.add("1,"),1)
 
+    def test_stringcalculator_liststartingwithcomma_shouldnotbreak(self):
+        self.assertEqual(StringCalculator.add(",8"),8)
+
+    def test_stringcalculator_listwithmultipleemptycommas_shouldnotbreak(self):
+        self.assertEqual(StringCalculator.add(",,,,8,,,,"),8)
+        self.assertEqual(StringCalculator.add(",,3,,,,5,,"),8)
+        self.assertEqual(StringCalculator.add("3,,,,,,5,,"),8)
+        self.assertEqual(StringCalculator.add(",,3,,,,,,5"),8)
+        self.assertEqual(StringCalculator.add("3,,,,,,,,5"),8)
+
+    def test_stringcalculator_multiplenumber_shouldreturnsum(self):
+        self.assertEqual(StringCalculator.add("1,2,3,4"),10)
+        self.assertEqual(StringCalculator.add("2,2,2,2,2,2,2,2,2,2"),20)
+
+    
+
         
