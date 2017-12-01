@@ -11,10 +11,10 @@ class StringCalculatorsTest(unittest.TestCase):
         self.assertEqual(1,StringCalculator.add("1"))
 
     def test_stringcalculator_listofN_shouldreturnN(self):
-        rand = randint(1,999999)
+        rand = randint(1,1000)
         self.assertEqual(1,StringCalculator.add("1"))
         self.assertEqual(7,StringCalculator.add("7"))
-        self.assertEqual(1234567,StringCalculator.add("1234567"))
+        self.assertEqual(99,StringCalculator.add("99"))
         self.assertEqual(0,StringCalculator.add("0"))
         self.assertEqual(rand,StringCalculator.add(str(rand)))
 
@@ -22,8 +22,8 @@ class StringCalculatorsTest(unittest.TestCase):
         self.assertEqual(StringCalculator.add("1,2"),3)
         self.assertEqual(StringCalculator.add("5,10"),15)
         self.assertEqual(StringCalculator.add("88,9"),88+9)
-        rand1 = randint(1,999999)
-        rand2 = randint(1,999999)
+        rand1 = randint(1,1000)
+        rand2 = randint(1,1000)
         self.assertEqual(StringCalculator.add('{0!s},{1!s}'.format(rand1,rand2)),rand1+rand2)
     
     def test_stringcalculator_listendingwithcomma_shouldnotbreak(self):
@@ -57,6 +57,10 @@ class StringCalculatorsTest(unittest.TestCase):
             StringCalculator.add("1,-2")
         exc = ctx.exception
         self.assertEqual("negatives not allowed: -2",str(exc))    
+
+
+    def test_stringcalculator_numberbiggerthan1000_shouldbeignore(self):
+        self.assertEqual(StringCalculator.add("1000,1"),1)
     
 
 
