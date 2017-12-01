@@ -1,10 +1,11 @@
+import re
 from functools import reduce
 
 class StringCalculator:
     @staticmethod
     def add(numbers):
         if(len(numbers) >0):
-            numList = numbers.split(",")
+            numList = re.split(r'\W+', numbers)
             total = reduce(lambda tot, curr: StringCalculator.str_to_int(tot) + StringCalculator.str_to_int(curr), numList)
             return int(total)
         return 0

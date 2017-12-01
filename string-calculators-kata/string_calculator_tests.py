@@ -43,6 +43,16 @@ class StringCalculatorsTest(unittest.TestCase):
         self.assertEqual(StringCalculator.add("1,2,3,4"),10)
         self.assertEqual(StringCalculator.add("2,2,2,2,2,2,2,2,2,2"),20)
 
+    def test_stringcalculator_newlinesarelikecommas_shouldreturnsum(self):
+        self.assertEqual(StringCalculator.add("1\n2,3"),6)
+        self.assertEqual(StringCalculator.add("1\n,,"),1)
+
+    def test_stringcalculator_changedelimiterintheformat_shouldreturnsum(self):
+        self.assertEqual(StringCalculator.add("//;\n1;2"),3)
+
+  
+        
     
+
 
         
